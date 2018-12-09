@@ -45,16 +45,6 @@ public class SpinnerSelectionTest {
     @Rule
     public ActivityTestRule mActivityRule = new ActivityTestRule<>(
             MainActivity.class);
-
-    @Test
-    public void useAppContext() throws Exception {
-        // Context of the app under test.
-        Context appContext = InstrumentationRegistry.getTargetContext();
-
-        assertEquals("com.example.android.phonenumberspinner",
-                appContext.getPackageName());
-    }
-
     /**
      * Iterate through the spinner, selecting each item and
      * checking to see if it matches the string in the array.
@@ -75,5 +65,16 @@ public class SpinnerSelectionTest {
             onView(withId(R.id.text_phonelabel))
                     .check(matches(withText(containsString(myArray[i]))));
         }
+
+    @Test
+    public void useAppContext() throws Exception {
+        // Context of the app under test.
+        Context appContext = InstrumentationRegistry.getTargetContext();
+
+        assertEquals("com.example.android.phonenumberspinner",
+                appContext.getPackageName());
+    }
+
+
     }
 }
